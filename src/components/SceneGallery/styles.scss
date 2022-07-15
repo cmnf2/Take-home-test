@@ -1,0 +1,74 @@
+.SceneGalleryHeader {
+  text-align: center;
+}
+
+// SCENES
+ul.SceneList {
+  max-width: 1020px;
+  width: 100%;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  @media screen and (min-width: 800px) {
+    margin: 0 auto;
+  }
+}
+
+.Scene {
+  width: 100%;
+  box-sizing: border-box;
+  cursor: pointer;
+
+  @media screen and (min-width: 400px) {
+    width: 48%;
+    margin: 0.5%;
+  }
+
+  @media screen and (min-width: 800px) {
+    width: 30%;
+    margin: 0.5%;
+  }
+
+  @media screen and (min-width: 1200px) {
+    width: 21%;
+    margin: 0.5%;
+  }
+}
+
+// MODAL
+.Spotlight {
+  display: flex;
+  justify-content: center;
+  align-content: baseline;
+  margin-top: 3rem;
+  position: relative;
+  box-sizing: border-box;
+  &:focus {
+    outline: none;
+  }
+
+  button {
+    position: absolute;
+    top: 0.5rem;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    background-color: white;
+  }
+}
+
+.SpotlightImage {
+  background-color: white;
+  min-height: 5rem;
+
+  svg {
+    padding: 0.5rem;
+  }
+
+  p {
+    width: 80%;
+  }
+}

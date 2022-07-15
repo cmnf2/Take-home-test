@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SceneGallery should render component properly 1`] = `
+<div
+  className="sceneGallery"
+>
+  <h1
+    className="SceneGalleryHeader"
+  >
+    Available Scenes
+  </h1>
+  <style
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": ".css-rvv586-MuiImageList-root{display:grid;overflow-y:auto;list-style:none;padding:0;-webkit-overflow-scrolling:touch;}",
+      }
+    }
+    data-emotion="css rvv586-MuiImageList-root"
+  />
+  <ul
+    className="MuiImageList-root MuiImageList-standard SceneList css-rvv586-MuiImageList-root"
+    style={
+      Object {
+        "gap": 4,
+        "gridTemplateColumns": "repeat(2, 1fr)",
+      }
+    }
+  >
+    <style
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": ".css-pxxd1-MuiImageListItem-root{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;position:relative;line-height:0;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;}.css-pxxd1-MuiImageListItem-root .MuiImageListItem-img{object-fit:cover;width:100%;height:auto;-webkit-box-flex:1;-webkit-flex-grow:1;-ms-flex-positive:1;flex-grow:1;}",
+        }
+      }
+      data-emotion="css pxxd1-MuiImageListItem-root"
+    />
+    <li
+      className="MuiImageListItem-root MuiImageListItem-standard Scene css-pxxd1-MuiImageListItem-root"
+      onClick={[Function]}
+      role="button"
+      style={
+        Object {
+          "gridColumnEnd": "span 1",
+          "gridRowEnd": "span 1",
+          "height": "auto",
+          "marginBottom": undefined,
+        }
+      }
+    >
+      <img
+        alt="random"
+        className="MuiImageListItem-img"
+        loading="lazy"
+        src="/assets/images/loader.gif"
+      />
+    </li>
+  </ul>
+</div>
+`;
