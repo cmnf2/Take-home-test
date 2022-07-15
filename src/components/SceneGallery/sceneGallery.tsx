@@ -3,7 +3,7 @@
 import React, { ReactElement, useEffect } from "react";
 import Modal from "@mui/material/Modal";
 
-import { fetchScenes } from "../helpers/fetchScenes";
+import { fetchAndRetry, ReturnJson } from "../helpers/fetchAndRetry";
 import {randomizeSvgColors} from "../helpers/randomizeSVGColors";
 import SceneList from "./components/SceneList/sceneList";
 
@@ -27,9 +27,9 @@ function SceneGallery(): ReactElement {
     },
   ];
 
-  const [scenes, setScenes] = React.useState(loader);
-  const [bigImage, setBigImage] = React.useState("");
-  const [open, setOpen] = React.useState(false);
+  const [scenes, setScenes] = React.useState<Scene[]>(loader);
+  const [bigImage, setBigImage] = React.useState<string>("");
+  const [open, setOpen] = React.useState<boolean>(false);
 
   const closeModal = () => {
     setOpen(false);
@@ -41,10 +41,14 @@ function SceneGallery(): ReactElement {
     }
   });
 
-  const spotlightImage = async (url: String) => {
+  const spotlightImage = async (url: string) => {
     try {
-      const image = await fetch(`${url}`).then((res) => res.text());
-      setBigImage(randomizeSvgColors(image));
+      const image = await fetchAndRetry({
+        url: url, 
+        returnText: true, 
+        retries: 1
+      });
+      setBigImage(randomizeSvgColors(`${image?.data}`));
 
       setOpen(true);
     } catch (e) {
@@ -56,9 +60,13 @@ function SceneGallery(): ReactElement {
 
   const loadScenes = async () => {
     try {
-      const scenes = await fetchScenes();
+      const scenes = await fetchAndRetry({
+        url: "https://img.pixton.com/data/comic-scene-group-data.json", 
+        returnText: false, 
+        retries: 1
+      });
 
-      setScenes(scenes.data.sceneGroups as Scene[]);
+      setScenes(scenes?.data?.sceneGroups as Scene[]);
     } catch (e) {
       // Empty loaders and display error message
       setScenes([]);
@@ -69,7 +77,7 @@ function SceneGallery(): ReactElement {
     <div className="sceneGallery">
       <h1 className={style.SceneGalleryHeader}>Available Scenes</h1>
 
-      <SceneList scenes={scenes} callback={(url) => spotlightImage(url)}></SceneList>
+      <SceneList scenes={scenes} numberOfPostsShown={50} callback={(url) => spotlightImage(url)}></SceneList>
 
       <Modal
         open={open}

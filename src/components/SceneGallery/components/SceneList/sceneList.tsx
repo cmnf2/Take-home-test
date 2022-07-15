@@ -9,15 +9,15 @@ import style from "./styles.scss"
 
 interface SceneLoaderProps {
   scenes: Scene[];
-  callback: (string:String) => {};
+  callback: (string:string) => {};
+  numberOfPostsShown: number;
 }
 
-function SceneList({scenes, callback}:SceneLoaderProps) {
-  const postDisplayBatchSize:number = 50;
-  const [numberOfPostsDisplayed, setNumberOfPostsDisplayed] = React. useState(postDisplayBatchSize);
+function SceneList({scenes, numberOfPostsShown, callback}:SceneLoaderProps) {
+  const [numberOfPostsDisplayed, setNumberOfPostsDisplayed] = React. useState(numberOfPostsShown);
 
   const renderMoreScenes = () => {
-    setNumberOfPostsDisplayed(numberOfPostsDisplayed + postDisplayBatchSize);
+    setNumberOfPostsDisplayed(numberOfPostsDisplayed + numberOfPostsShown);
   }
 
   return(
