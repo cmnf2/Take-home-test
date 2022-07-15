@@ -4,6 +4,7 @@ import renderer from 'react-test-renderer';
 import { Scene } from '@components/sceneGallery/sceneGallery';
 import SceneList, {SceneLoaderProps} from '@components/sceneGallery/components/SceneList/sceneList';
 import { Button } from '@mui/material';
+import Modal from "@mui/material/Modal";
 
 
 const testScenes = [

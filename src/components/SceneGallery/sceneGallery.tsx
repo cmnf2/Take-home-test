@@ -91,6 +91,7 @@ function SceneGallery(): ReactElement {
             close
           </button>
           <div
+            id="SpotlightImage"
             className={style.SpotlightImage}
             dangerouslySetInnerHTML={{ __html: bigImage }}
           ></div>
