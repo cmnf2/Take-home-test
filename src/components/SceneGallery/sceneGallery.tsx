@@ -48,7 +48,9 @@ function SceneGallery(): ReactElement {
         returnText: true, 
         retries: 1
       });
-      setBigImage(randomizeSvgColors(`${image?.data}`));
+
+      console.log(image)
+      setBigImage(randomizeSvgColors(`${image}`));
 
       setOpen(true);
     } catch (e) {

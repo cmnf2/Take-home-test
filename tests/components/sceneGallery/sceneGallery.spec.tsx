@@ -17,18 +17,18 @@ fetchMock.enableMocks();
 let scenesGallery: any;
 
 describe('SceneGallery', () => {
-  beforeAll(async () => {
-    fetchMock.doMock()
-    fetchMock.mockResponseOnce(JSON.stringify(testResponse));
+  // beforeAll(async () => {
+  //   fetchMock.doMock()
+  //   fetchMock.mockResponseOnce(JSON.stringify(testResponse));
 
-    scenesGallery = await renderer.create(<SceneGallery />);
-  });
+  //   scenesGallery = await renderer.create(<SceneGallery />);
+  // });
 
-  test('should render component properly', () => {
-    fetchMock.mockResponseOnce(JSON.stringify(testResponse));
-
-    const tree = scenesGallery.toJSON();
-
-    expect(tree).toMatchSnapshot();
-  });
+  // Load sceneList
+  // Modal present
+  // Load loading image before scenes are loaded
+  // On state change adds scenes to scenes
+  // Opens Modal
+  // Closes Modal
+  // Modal contains image
 });
