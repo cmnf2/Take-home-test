@@ -1,3 +1,5 @@
+"use strict";
+
 export function fetchScenes(retries:number = 1): Promise<any> {
   return fetch("https://img.pixton.com/data/comic-scene-group-data.json").then((res) => {
   

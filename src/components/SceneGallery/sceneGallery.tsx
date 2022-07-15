@@ -1,10 +1,11 @@
+"use strict";
+
 import React, { ReactElement, useEffect } from "react";
-import ImageList from "@mui/material/ImageList";
-import ImageListItem from "@mui/material/ImageListItem";
 import Modal from "@mui/material/Modal";
 
 import { fetchScenes } from "../helpers/fetchScenes";
 import {randomizeSvgColors} from "../helpers/randomizeSVGColors";
+import SceneList from "./components/SceneList/sceneList";
 
 import style from "./styles.scss";
 import "../../assets/images/loader.gif";
@@ -40,9 +41,9 @@ function SceneGallery(): ReactElement {
     }
   });
 
-  const spotlightImage = async (url: string) => {
+  const spotlightImage = async (url: String) => {
     try {
-      const image = await fetch(url).then((res) => res.text());
+      const image = await fetch(`${url}`).then((res) => res.text());
       setBigImage(randomizeSvgColors(image));
 
       setOpen(true);
@@ -68,26 +69,7 @@ function SceneGallery(): ReactElement {
     <div className="sceneGallery">
       <h1 className={style.SceneGalleryHeader}>Available Scenes</h1>
 
-      <ImageList rowHeight={"auto"} className={style.SceneList}>
-        {scenes.length > 0 ? (
-          scenes.map((scene) => (
-            <ImageListItem
-              key={scene.key}
-              className={style.Scene}
-              role="button"
-              onClick={() =>
-                scene.key == "loader" ? {} : spotlightImage(scene.url)
-              }
-            >
-              <img src={scene.url} alt={scene.propCat} loading="lazy" />
-            </ImageListItem>
-          ))
-        ) : (
-          <p id="ErrorMessage" role="alert">
-            We're sorry, something went wrong. Please try back another time.
-          </p>
-        )}
-      </ImageList>
+      <SceneList scenes={scenes} callback={(url) => spotlightImage(url)}></SceneList>
 
       <Modal
         open={open}
