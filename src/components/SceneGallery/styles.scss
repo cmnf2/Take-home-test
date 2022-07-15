@@ -7,16 +7,18 @@
   display: flex;
   justify-content: center;
   align-content: baseline;
-  margin-top: 3rem;
+  margin-top: 8rem;
   position: relative;
   box-sizing: border-box;
+
   &:focus {
     outline: none;
   }
 
   button {
     position: absolute;
-    top: 0.5rem;
+    top: -3rem;
+    z-index: 99;
     border: none;
     cursor: pointer;
     font-size: 1.2rem;
@@ -27,6 +29,7 @@
 .SpotlightImage {
   background-color: white;
   min-height: 5rem;
+  transform: scale(1.5);
 
   svg {
     padding: 0.5rem;
